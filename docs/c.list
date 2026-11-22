@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE categories
-        SYSTEM "https://resources.jetbrains.com/writerside/1.0/categories.dtd">
-<categories>
-    <category id="plugins-lists" name="Plugins" order="1" />
-    <category id="laravel-projects-list" name="Plugins" order="2" />
-    <category id="getting-started" name="Getting Started" order="3" />
-</categories>

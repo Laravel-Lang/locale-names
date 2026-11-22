@@ -1,8 +1,0 @@
-{
-    "name": "tests/model-consumer",
-    "autoload": {
-        "psr-4": {
-            "App\\": "app/"
-        }
-    }
-}

@@ -1,4 +1,0 @@
-{
-  "name": "fixture/multirepo-api",
-  "require": { "php": ">=8.2" }
-}
