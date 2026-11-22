@@ -1,141 +1,89 @@
 {
-    "name": "laravel-lang/mona",
-    "description": "Easily connect the necessary language packs to the application",
+    "name": "laravel-lang/locale-names",
+    "description": "The project contains native translations of locale names",
     "license": "MIT",
     "type": "library",
     "keywords": [
-        "actions",
-        "attributes",
-        "country-names",
-        "currency-names",
-        "http-statuses",
-        "json-fallback",
         "lang",
         "languages",
         "laravel",
         "laravel-lang",
         "locale",
-        "locale-list",
-        "locale-names",
         "locales",
         "localization",
-        "models",
-        "moonshine",
-        "routes",
-        "starter-kits",
-        "translatable-routes",
-        "translate-models",
+        "translation",
         "translations"
     ],
     "authors": [
         {
             "name": "Andrey Helldar",
-            "email": "helldar@dragon-code.pro",
-            "homepage": "https://dragon-code.pro"
+            "email": "helldar@dragon-code.pro"
         },
         {
             "name": "Laravel-Lang Team",
             "homepage": "https://laravel-lang.com"
         }
     ],
-    "homepage": "https://laravel-lang.com",
     "support": {
-        "issues": "https://github.com/Laravel-Lang/mona/issues",
-        "source": "https://github.com/Laravel-Lang/mona"
+        "issues": "https://github.com/Laravel-Lang/locale-names/issues",
+        "source": "https://github.com/Laravel-Lang/locale-names"
     },
+    "funding": [
+        {
+            "type": "boosty",
+            "url": "https://boosty.to/dragon-code"
+        },
+        {
+            "type": "yoomoney",
+            "url": "https://yoomoney.ru/to/410012608840929"
+        }
+    ],
     "require": {
-        "php": "^8.3",
-        "ext-intl": "*",
-        "ext-json": "*",
-        "symfony/console": "^7.4 || ^8.1",
-        "symfony/polyfill-php86": "^1.43"
+        "php": "^8.1",
+        "ext-json": "*"
     },
     "require-dev": {
-        "ext-zip": "*",
-        "composer/class-map-generator": "^1.9",
-        "composer/semver": "^3.6",
-        "dragon-code/benchmark": "^4.6",
-        "driftingly/rector-laravel": "^2.7",
-        "ergebnis/composer-normalize": "^2.57",
-        "larastan/larastan": "^3.15",
-        "laravel/pint": "^1.32",
-        "laravel/prompts": "^0.3.26",
-        "orchestra/testbench": "^10.0 || ^11.0",
-        "pestphp/pest": "^4.7.8 || ^5.3.5",
-        "pestphp/pest-plugin-laravel": "^4.0 || ^5.0",
-        "spatie/laravel-data": "^4.23",
-        "symfony/var-dumper": "^7.4 || ^8.1",
-        "symfony/var-exporter": "^7.4 || ^8.1"
+        "illuminate/support": "^10.0 || ^11.0 || ^12.0 || ^13.0 || dev-master",
+        "laravel-lang/locale-list": "^1.2",
+        "pestphp/pest": "^2.24.3 || ^3.0 || ^4.0",
+        "punic/punic": "^3.8",
+        "symfony/console": "^6.0 || ^7.0",
+        "symfony/process": "^6.0 || ^7.0",
+        "symfony/var-dumper": "^6.0 || ^7.0"
     },
     "minimum-stability": "stable",
     "prefer-stable": true,
     "autoload": {
         "psr-4": {
-            "LaravelLang\\Config\\": "src/Config/src/",
-            "LaravelLang\\Exceptions\\": "src/Exceptions/src/",
-            "LaravelLang\\Filesystem\\": "src/Filesystem/src/",
-            "LaravelLang\\JsonFallback\\": "src/JsonFallback/src/",
-            "LaravelLang\\LocaleList\\": "src/LocaleList/src/",
-            "LaravelLang\\Locales\\": "src/Locales/src/",
-            "LaravelLang\\Models\\": "src/Models/src/",
-            "LaravelLang\\NativeCountryNames\\": "src/NativeCountryNames/src/",
-            "LaravelLang\\NativeCurrencyNames\\": "src/NativeCurrencyNames/src/",
-            "LaravelLang\\NativeLocaleNames\\": "src/NativeLocaleNames/src/",
-            "LaravelLang\\Publisher\\": "src/Publisher/src/",
-            "LaravelLang\\Routes\\": "src/Routes/src/",
-            "LaravelLang\\Toolkit\\": "src/Toolkit/src/"
+            "LaravelLang\\LocaleNames\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Tests\\": "tests/",
-            "Workbench\\App\\": "workbench/app/",
-            "Workbench\\Database\\Factories\\": "workbench/database/factories/",
-            "Workbench\\Database\\Seeders\\": "workbench/database/seeders/",
-            "Workbench\\Package\\": "workbench/package/"
-        },
-        "files": [
-            "src/Routes/src/helpers.php"
-        ]
+            "LaravelLang\\Dev\\": "app/",
+            "Tests\\": "tests/"
+        }
     },
     "config": {
         "allow-plugins": {
+            "dragon-code/codestyler": true,
             "ergebnis/composer-normalize": true,
+            "friendsofphp/php-cs-fixer": true,
             "laravel/pint": true,
-            "pestphp/pest-plugin": true
-        },
-        "policy": {
-            "abandoned": {
-                "block": false,
-                "audit": "report"
-            },
-            "cooldown": {
-                "period": "3 days"
-            }
+            "pestphp/pest-plugin": true,
+            "php-http/discovery": true,
+            "symfony/thanks": true
         },
         "preferred-install": "dist",
         "sort-packages": true
     },
     "scripts": {
-        "post-autoload-dump": [
-            "@clear",
-            "@prepare"
+        "collect": [
+            "php bin/native cldr",
+            "php bin/native collect"
         ],
-        "build": "@php vendor/bin/testbench workbench:build --ansi",
-        "clear": "@php vendor/bin/testbench package:purge-skeleton --ansi",
-        "prepare": "@php vendor/bin/testbench package:discover --ansi",
-        "serve": [
-            "Composer\\Config::disableProcessTimeout",
-            "@build",
-            "@php vendor/bin/testbench serve --ansi"
-        ],
-        "style": [
-            "@composer normalize",
-            "@php vendor/bin/rector --ansi",
-            "@php vendor/bin/pint --parallel --ansi"
-        ],
-        "test": "@php vendor/bin/pest --parallel",
-        "test:coverage": "@php -d xdebug.mode=coverage vendor/bin/pest --coverage --min=99",
-        "test:types": "@php vendor/bin/phpstan analyse --memory-limit=-1"
+        "test": [
+            "php vendor/bin/pest --parallel"
+        ]
     }
 }

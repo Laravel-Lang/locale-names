@@ -1,5 +1,0 @@
-{
-  "name": "quality-fixture-mixed",
-  "private": true,
-  "workspaces": ["web"]
-}
