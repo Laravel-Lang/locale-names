@@ -1,4 +1,0 @@
-{
-  "name": "fixture/mixed-backend",
-  "require": { "php": ">=8.2" }
-}
